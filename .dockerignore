@@ -1,0 +1,9 @@
+node_modules
+client_v2/node_modules
+client/node_modules
+.git
+.github
+itguard_work
+itguard_conf
+dist
+

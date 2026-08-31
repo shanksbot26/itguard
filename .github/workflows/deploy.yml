@@ -1,0 +1,23 @@
+name: Deploy ITGUARD (Self-Hosted Runner)
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build & Deploy ITGUARD on Server
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build & Run Container
+        run: |
+          docker compose up -d --build
+
+      - name: Cleanup Old Dangling Images
+        run: |
+          docker image prune -f
